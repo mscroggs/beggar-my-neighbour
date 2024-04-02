@@ -1,4 +1,4 @@
-# Beggar-ny-neighbour forever
+# Beggar-my-neighbour forever
 
 A [Mastodon bot (@beggarmyneighbour@mathstodon.xyz)](https://mathstodon.xyz/@beggarmyneighbour)
 that is posting a never-ending game of Beggar-My-Neighbour, based on the paper
