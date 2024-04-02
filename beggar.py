@@ -109,3 +109,46 @@ def describe(player, cards):
     elif len(cardnames) == 2:
         cardnames = cardnames[:-2] + [cardnames[-2] + " and " + cardnames[-1]]
     return f"Player {player} played " + ", ".join(cardnames) + extra
+
+
+def pemoji(player):
+    if player == 0:
+        return u"\U0001F468"
+    else:
+        assert player == 1
+        return u"\U0001F469"
+
+
+def semoji(suit):
+    if suit == "H":
+        return u"\U00002665\U0000FE0F"
+    elif suit == "C":
+        return u"\U00002663\U0000FE0F"
+    elif suit == "D":
+        return u"\U00002666\U0000FE0F"
+    elif suit == "S":
+        return u"\U00002660\U0000FE0F"
+    else:
+        raise ValueError(f"Unknown suit: {suit}")
+
+
+def hand(direction):
+    if direction == "<":
+        return u"\U0001F448"
+    elif direction == ">":
+        return u"\U0001F449"
+    else:
+        raise ValueError(f"Unknown direction: {direction}")
+
+
+def as_toot(player, cards):
+    out = []
+    for c in cards:
+        if c[0] == "!":
+            out.append(f"\n{pemoji(1 - player)} picks up {cards[-1][1]} cards")
+        else:
+            if player == 0:
+                out.append(f"{pemoji(player)}{hand('>')} {c[0]}{semoji(c[1])}")
+            else:
+                out.append(f"{c[0]}{semoji(c[1])} {hand('<')}{pemoji(player)}")
+    return "\n".join(out)

@@ -1,5 +1,6 @@
 from mastodon import Mastodon
 
+
 def toot(text):
     print(text)
     return
